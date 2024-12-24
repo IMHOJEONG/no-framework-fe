@@ -1,14 +1,21 @@
 import getTodos from './getTodos.js'
-import view from './view.js'
+import todosView from './view/todos.js'
+import counterView from './view/counter.js'
+import filtersView from './view/filters.js'
+
+import registry from './registry.js'
+
+registry.add('todos', todosView)
+registry.add('counter', counterView)
+registry.add('filters', filtersView)
 
 const state = {
   todos: getTodos(),
   currentFilter: 'All'
 }
 
-const main = document.querySelector('.todoapp')
-
 window.requestAnimationFrame(() => {
-  const newMain = view(main, state)
-  main.replaceWith(newMain)
+    const main = document.querySelector('.todoapp')
+    const newMain = registry.renderRoot(main, state)
+    main.replaceWith(newMain)
 })
