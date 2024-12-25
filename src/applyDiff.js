@@ -67,3 +67,5 @@ const isNodeChanged = (node1, node2) => {
     return false
 
 }   
+
+export default applyDiff
