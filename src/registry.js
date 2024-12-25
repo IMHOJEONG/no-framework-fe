@@ -1,9 +1,10 @@
+const registry = {}
 /**
  * 원래 컴포넌트를 가져와 동일한 서명의 새로운 컴포넌트를 반환
  */
 const renderWrapper = component => {
-    return (targetElement, state) => {
-      const element = component(targetElement, state)
+  return (targetElement, state, events) => {
+    const element = component(targetElement, state, events)
   
       // 레지스트리에서 data-copmonent 속성을 가진 모든 DOM 요소를 찾음 
       const childComponents = element
@@ -38,12 +39,15 @@ const renderWrapper = component => {
   }
   
   // 최초 DOM 요소에서 렌더링을 시작하려면, 애플리케이션의 루트를 렌더링하는 메서드를 제공해야 함
-  const renderRoot = (root, state) => {
+  // 렌더링 엔진의 진입점 = renderRoot
+  // 이벤트를 포함하는 세 번째 매개변수를 받게 됨 (곧 새로운 매개변수가 모든 컴포넌트에 접근할 수 있다는 것을 알게 됨)
+  // 
+  const renderRoot = (root, state, events) => {
     const cloneComponent = root => {
       return root.cloneNode(true)
     }
   
-    return renderWrapper(cloneComponent)(root, state)
+    return renderWrapper(cloneComponent)(root, state, events)
   }
   
   // add, renderRoot 메서드는 컴포넌트 레지스트리의 공용 인터페이스

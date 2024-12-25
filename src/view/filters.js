@@ -3,7 +3,7 @@ export default (targetElement, { currentFilter }) => {
    const newCounter = targetElement.cloneNode(true)
   
     Array
-      .from(filters.querySelectorAll('li a'))
+      .from(newCounter.querySelectorAll('li a'))
       .forEach(a => {
         if (a.textContent === currentFilter) {
           a.classList.add('selected')
