@@ -21,7 +21,8 @@ const render = () => {
     window.requestAnimationFrame(()=>{
         const main = document.querySelector('.todoapp')
         const newMain = registry.renderRoot(main, state)
-        main.replaceWith(newMain)
+        // main.replaceWith(newMain)
+        applyDiff(document.body, main, newMain)
     })
 }
 
