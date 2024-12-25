@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <link rel="shortcut icon" href="../favicon.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/todomvc-common@1.0.5/base.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/todomvc-app-css@2.1.2/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
@@ -13,17 +14,29 @@
     <section class="todoapp">
         <header class="header">
             <h1>todos</h1>
-            <input class="new-todo" placeholder="What needs to be done?" autofocus>
+            <input 
+                class="new-todo" 
+                placeholder="What needs to be done?" 
+                autofocus>
         </header>
         <section class="main">
-            <input id="toggle-all" class="toggle-all" type="checkbox">
-            <label for="toggle-all">Mark all as complete</label>
-            <ul class="todo-list">
+            <input 
+                id="toggle-all" 
+                class="toggle-all" 
+                type="checkbox">
+            <label for="toggle-all">
+                Mark all as complete
+            </label>
+            <ul class="todo-list" data-component="todos">
             </ul>
         </section>
         <footer class="footer">
-            <span class="todo-count">1 Item Left</span>
-            <ul class="filters">
+            <span 
+                class="todo-count" 
+                data-component="counter">
+                    1 Item Left
+            </span>
+            <ul class="filters" data-component="filters">
                 <li>
                     <a href="#/">All</a>
                 </li>
@@ -34,7 +47,9 @@
                     <a href="#/completed">Completed</a>
                 </li>
             </ul>
-            <button class="clear-completed">Clear completed</button>
+            <button class="clear-completed">
+                Clear completed
+            </button>
         </footer>
     </section>
     <footer class="info">
